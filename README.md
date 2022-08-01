@@ -54,13 +54,13 @@ The data path should be
 
 ex)
 
-[DATA_PATH]/[DATA_NAME] 
+[DATA_PATH]/[DATA_NAME]/
   - train
     - gt_amplitude
     - gt_phase
     - holography 
 
-[DATA_PATH]/[DATA_NAME_TEST] 
+[DATA_PATH]/[DATA_NAME_TEST]/
   - test
     - gt_amplitude
     - gt_phase
@@ -83,7 +83,7 @@ The data path should be
 
 ex)
 
-[DATA_PATH_TEST] 
+[DATA_PATH_TEST]/
   - fov1
     - test
   - fov2

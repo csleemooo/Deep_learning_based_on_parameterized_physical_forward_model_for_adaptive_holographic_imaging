@@ -8,6 +8,11 @@ Holographic imaging poses the ill-posed inverse mapping problem of retrieving co
 <img src="/image/MainFigure_1.png" width="800" height="760">
 </p>
 
+# network structure
+<p align = "center">
+<img src="/image/SupplementaryFigure_1.png" width="800" height="330">
+</p>
+
 # System Requirements
 ## Clone
 ```
@@ -66,6 +71,8 @@ The proposed network can be trained with following command.
 ```
 python train_main.py --data_root [DATA_PATH] --data_name_gt [DATA_NAME] --data_name_diffraction [DATA_NAME] --data_name_test [DATA_NAME_TEST] --train_diffraction_list 13 --test_diffraction_list 7,9,11,13,15,17 --result_root [RESULT_PATH] --experiment [EXPERIMENT_NAME] --distance_min 7 --distance_max 17 --train_gt_ratio 1 --train_diffraction_ratio 1
 ```
+The network parameters trained with full dataset can be downloaded from [here](https://drive.google.com/drive/folders/1Y6R8plKylzHNT4wkBEA4GeOreY9id1xm?usp=sharing.)
+
 
 # Reproduce
 Here, user can reproduce the reported results from Fig 2 to Fig 5 by following instructions.  

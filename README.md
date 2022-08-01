@@ -5,7 +5,7 @@ We provied pytorch(python) implementations of **Deep learning based on parameter
 # Overview
 Holographic imaging poses the ill-posed inverse mapping problem of retrieving complex amplitude maps from measured diffraction intensity patterns. The existing deep learning methods for holographic imaging often solely depends on the statistical relation between the given data distributions, compromising its reliability in practical imaging configurations where physical perturbations exist in various forms, such as mechanical movement and optical fluctuation. Here, we present a deep learning method based a parameterized physical forward model that reconstructs both the complex amplitude and the range of objects under highly perturbative configurations where the object-to-sensor distance is set beyond the range of a given training data. To prove the reliability in practical biomedical applications, we demonstrate holographic imaging of red blood cells flowing in a cluster and diverse types of tissue sections presented without any ground truth data. Our results suggest that the proposed approach permits the adaptability of deep learning methods to deterministic perturbations, and therefore, extends their applicability to a wide range of inverse problems in imaging. 
 <p align = "center">
-<img src="/image/simple_scheme.png" width="900" height="330">
+<img src="/image/MainFigure_1.png" width="900" height="330">
 </p>
 
 # System Requirements
@@ -16,14 +16,14 @@ git clone https://github.com/csleemooo/Deep_learning_based_on_parameterized_phys
 
 ## Packages
 The following libraries are necessary for running the codes.
-- Python >= 3.7
-- Pytorch >= 1.10.2
-- phasepack == 1.5
-- numpy
-- PIL
-- matplotlib
-- scipy
-- scikit-image
+- pytorch==1.11.0
+- phasepack==1.3
+- numpy==1.21.5
+- Pillow==9.0.1
+- matplotlib==3.5.2
+- scipy==1.7.3
+- opencv-python==4.6.0.66
+- pyfftw==0.13.0
 
 Please install requirements using below command.
 ```

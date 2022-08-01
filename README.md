@@ -13,7 +13,10 @@ Holographic imaging poses the ill-posed inverse mapping problem of retrieving co
 ```
 git clone https://github.com/csleemooo/Deep_learning_based_on_parameterized_physical_forward_model_for_adaptive_holographic_imaging.git
 ```
-
+Move to cloned directory
+'''
+cd Deep_learning_based_on_parameterized_physical_forward_model_for_adaptive_holographic_imaging
+'''
 ## Packages
 The following libraries are necessary for running the codes.
 - pytorch==1.11.0

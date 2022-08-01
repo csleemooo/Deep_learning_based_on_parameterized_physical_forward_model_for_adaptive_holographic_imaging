@@ -52,6 +52,7 @@ ex)
     - gt_amplitude
     - gt_phase
     - holography
+
 [DATA_PATH_TEST]/polystyrene_bead_test [DATA_NAME]
   - train
     - gt_amplitude

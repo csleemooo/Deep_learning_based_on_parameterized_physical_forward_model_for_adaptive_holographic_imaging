@@ -20,6 +20,7 @@ cd Deep_learning_based_on_parameterized_physical_forward_model_for_adaptive_holo
 ## Packages
 The following libraries are necessary for running the codes.
 - torch==1.11.0
+- torchvision==0.12.0
 - phasepack==1.3
 - numpy==1.21.5
 - Pillow==9.0.1

@@ -60,7 +60,7 @@ ex)
     - gt_phase
     - holography 
 
-[DATA_PATH_TEST]/[DATA_NAME] 
+[DATA_PATH]/[DATA_NAME_TEST] 
   - test
     - gt_amplitude
     - gt_phase

@@ -79,9 +79,7 @@ Running time: up to 4 hours on the tested environment.
 
 # Test
 We shared additional test data. Download **test_4fov.zip** from [here](https://drive.google.com/drive/u/2/folders/1kOjNYEzl8IAgIC-VBdlFQtojzrqdr2YU).
-
 The data path should be
-
 ex)
 
 [DATA_PATH_TEST]/
@@ -91,8 +89,7 @@ ex)
     - test
   ...
 
-The network can be tested with following commaing.
-
+The network can be tested with following command.
 [FOV]: fov1 or fov2 or fov3 or fov4
 ```
 python test_main.py --data_root [DATA_PATH_TEST] --data_name_test [FOV] --model_root [RESULT_PATH] --experiment [EXPERIMENT_NAME] --test_diffraction_list 7,8,9,10,11,12,13,14,15,16,17

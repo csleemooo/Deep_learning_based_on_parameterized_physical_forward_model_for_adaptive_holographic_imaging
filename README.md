@@ -69,10 +69,11 @@ ex)
 The proposed network can be trained with following command.
 
 [DATA_PATH], [DATA_NAME], [DATA_NAME_TEST], [RESULT_PATH], and [EXPERIMENT_NAME] should be filled by user.
+Also, **Adaptive holographic imaging** can be implemented by setting --train_diffraction_list 13.
 ```
 python train_main.py --data_root [DATA_PATH] --data_name_gt [DATA_NAME] --data_name_diffraction [DATA_NAME] --data_name_test [DATA_NAME_TEST] --train_diffraction_list 7,9,11,13,15,17 --test_diffraction_list 7,9,11,13,15,17 --result_root [RESULT_PATH] --experiment [EXPERIMENT_NAME] --distance_min 7 --distance_max 17 --train_gt_ratio 1 --train_diffraction_ratio 1
 ```
-The trained network parameters are saved at [RESULT_PATH]/[EXPERIMENT_NAME]. Also, the network parameters trained with full dataset can be downloaded from [here](https://drive.google.com/drive/folders/1Y6R8plKylzHNT4wkBEA4GeOreY9id1xm?usp=sharing.).
+The trained network parameters will be saved at [RESULT_PATH]/[EXPERIMENT_NAME]. Also, the network parameters trained with full dataset can be downloaded from [here](https://drive.google.com/drive/folders/1Y6R8plKylzHNT4wkBEA4GeOreY9id1xm?usp=sharing.).
 
 Running time: up to 4 hours on the tested environment. 
 
@@ -96,7 +97,7 @@ The network can be tested with following commaing.
 ```
 python test_main.py --data_root [DATA_PATH_TEST] --data_name_test [FOV] --model_root [RESULT_PATH] --experiment [EXPERIMENT_NAME] --test_diffraction_list 7,8,9,10,11,12,13,14,15,16,17
 ```
-Test result is saved at [RESULT_PATH]/[EXPERIMENT_NAME]/test_image_result.
+Test result will be saved at [RESULT_PATH]/[EXPERIMENT_NAME]/test_image_result.
 
 Running time: less than a minute on the tested environment. 
 
@@ -105,28 +106,28 @@ Here, user can reproduce the reported results from Fig 2 to Fig 5 by following i
 Also, trained network parameters used in this study can be downloaded from [here](https://drive.google.com/drive/folders/1Y6R8plKylzHNT4wkBEA4GeOreY9id1xm?usp=sharing.). Download folders and put them to **./model_parameters** folder.  
 
 ### Demonstration of simultaneous reconstruction of complex amplitude and object distance
-Here, simultaneous reconstruction of complex amplitude and distance range from single hologram intensity measurement is demonstrated. By integrating parameterized forward model with CycleGAN architecture, the proposed method can successfully reconstruct complex amplitude and object distance simultaneously. Run the following command.  
+Here, simultaneous reconstruction of complex amplitude and distance range from a single diffraction intensity measurement is demonstrated. By integrating parameterized forward model with CycleGAN architecture, the proposed method can successfully reconstruct complex amplitude and object distance simultaneously. Run the following command.  
 ```
 python result./result_fig2.py
 ```
 Running time(CPU): 5s
 
 ### Demonstration of adaptive holographic imaging
-The networks were trained in the situation where only single-dpeth hologram intensity measurements can be acquired. As the proposed model parameterized the physical degree of freedom (i.e. distance), the out-of-distribution data(i.e. hologram intensities measured at different distances) can be handled. Complex amplitude of polystyrene microsphere reconstructed from four different methods -U-Net, CycleGAN, PhaseGAN, and the proposed- and corresponding ground truth images are compared. Run the following command.  
+The networks were trained in the situation where only single-dpeth diffraction intensity measurements can be acquired. As the proposed model parameterized the physical degree of freedom (i.e. distance), the out-of-distribution data(i.e. diffraction intensities measured at different distances) can be handled. Complex amplitude of polystyrene microsphere reconstructed from four different methods -U-Net, CycleGAN, PhaseGAN, and the proposed- and corresponding ground truth images are compared. Run the following command.  
 ```
 python result./result_fig3.py
 ```
 Running time(CPU): 15s
 
 ### Demonstration of holographic imaging of RBCs in a dynamic environment
-To demonstrate the practicality of the proposed method, a series of hologram intensities of red blood cells that drift along the slide glass is measured and used as network input. 5 intermediate frames of input hologram intensities and the corresponding reconstructed complex amplitude are presented. Run the following command.
+To demonstrate the practicality of the proposed method, a series of diffraction intensities of red blood cells that drift along the slide glass is measured and used as network input. 5 intermediate frames of input diffraction intensities and the corresponding reconstructed complex amplitude are presented. Run the following command.
 ```
 python result./result_fig4.py
 ```
 Running time(CPU): 5s
 
 ### Holographic imaging of histology slides without ground truth
-Here we assumed that acquiring paired data between complex amplitude and hologram intensity are not accessible. In this situation, complex amplitude of appendix and colon reconstructed from three different methods -CycleGAN, PhaseGAN, and the proposed- and corresponding ground truth images are compared. Notably, supervised method -U-Net- is omitted as paired data is not accessible. Run the following command.  
+Here we assumed that acquiring paired data between complex amplitude and diffraction intensity are not accessible. In this situation, complex amplitude of appendix and colon reconstructed from three different methods -CycleGAN, PhaseGAN, and the proposed- and corresponding ground truth images are compared. Notably, supervised method -U-Net- is omitted as paired data is not accessible. Run the following command.  
 ```
 python result./result_fig5.py
 ```

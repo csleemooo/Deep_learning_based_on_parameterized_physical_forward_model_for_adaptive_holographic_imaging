@@ -44,8 +44,8 @@ The data path should be
 
 ex)
 [DATA_PATH]/polystyrene_bead [DATA_NAME]
-  &mdash train
-    &ndash gt_amplitude
+  - train
+    - gt_amplitude
     - gt_phase
     - holography 
   - test

@@ -39,7 +39,8 @@ The package development version is tested on windows. The developmental version 
 
 # Train
 We shared 300 patches of ground truth data and 100 patches of diffraction pattern intensity for each distance - 7, 9, 11, 13, 15, and 17mm of polystyrene bead data.
-The data ca be downloaded from [here](https://drive.google.com/drive/u/2/folders/1kOjNYEzl8IAgIC-VBdlFQtojzrqdr2YU).\n
+The data ca be downloaded from [here](https://drive.google.com/drive/u/2/folders/1kOjNYEzl8IAgIC-VBdlFQtojzrqdr2YU).
+
 The data path should be
 
 ex)
@@ -48,16 +49,8 @@ ex)
     - gt_amplitude
     - gt_phase
     - holography 
-  - test
-    - gt_amplitude
-    - gt_phase
-    - holography
 
 [DATA_PATH_TEST]/polystyrene_bead_test [DATA_NAME]
-  - train
-    - gt_amplitude
-    - gt_phase
-    - holography 
   - test
     - gt_amplitude
     - gt_phase

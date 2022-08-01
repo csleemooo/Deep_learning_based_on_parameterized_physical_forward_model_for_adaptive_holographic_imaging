@@ -11,7 +11,7 @@ Holographic imaging poses the ill-posed inverse mapping problem of retrieving co
 # System Requirements
 ## Clone
 ```
-git clone https://github.com/csleemooo/Physics_informed_unsupervised_deep_learning_for_adaptive_holographic_imaging
+git clone https://github.com/csleemooo/Deep_learning_based_on_parameterized_physical_forward_model_for_adaptive_holographic_imaging.git
 ```
 
 ## Packages

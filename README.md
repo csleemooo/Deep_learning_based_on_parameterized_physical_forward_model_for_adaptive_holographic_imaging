@@ -10,7 +10,7 @@ Holographic imaging poses the ill-posed inverse mapping problem of retrieving co
 
 # network structure
 <p align = "center">
-<img src="/image/SupplementaryFigure_1.png" width="800" height="330">
+<img src="/image/SupplementaryFigure_1.png" width="800" height="400">
 </p>
 
 # System Requirements

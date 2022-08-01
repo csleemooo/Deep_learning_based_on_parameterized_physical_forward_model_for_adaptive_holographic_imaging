@@ -37,9 +37,35 @@ The package development version is tested on windows. The developmental version 
 - CUDA 11.3
 - cuDnn 8.2
 
-# Demo
+# Train
+We shared 300 patches of ground truth data and 100 patches of diffraction pattern intensity for each distance - 7, 9, 11, 13, 15, and 17mm of polystyrene bead data.
+The data ca be downloaded from [here](https://drive.google.com/drive/u/2/folders/1kOjNYEzl8IAgIC-VBdlFQtojzrqdr2YU)
+The data path should be
+ex)
+[DATA_PATH]/polystyrene_bead [DATA_NAME]
+  - train
+    - gt_amplitude
+    - gt_phase
+    - holography 
+  - test
+    - gt_amplitude
+    - gt_phase
+    - holography
+[DATA_PATH_TEST]/polystyrene_bead_test [DATA_NAME]
+  - train
+    - gt_amplitude
+    - gt_phase
+    - holography 
+  - test
+    - gt_amplitude
+    - gt_phase
+    - holography
 
-  
+The proposed network can be trained with following command
+```
+python train_main.py --data_root [DATA_PATH] --data_name_gt [DATA_NAME] --data_name_diffraction [DATA_NAME] --data_name_test [DATA_NAME_TEST] --train_diffraction_list 13 --test_diffraction_list 7,9,11,13,15,17 --result_root [RESULT_PATH] --experiment [EXPERIMENT_NAME] --distance_min 7 --distance_max 17 --train_gt_ratio 1 --train_diffraction_ratio 1
+```
+
 # Reproduce
 Here, user can reproduce the reported results from Fig 2 to Fig 5 by following instructions.  
 Also, trained network parameters used in this study can be downloaded from [here](https://drive.google.com/drive/folders/1Y6R8plKylzHNT4wkBEA4GeOreY9id1xm?usp=sharing.). Download folders and put them to **./model_parameters** folder.  

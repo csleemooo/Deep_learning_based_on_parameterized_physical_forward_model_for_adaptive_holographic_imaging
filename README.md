@@ -73,6 +73,7 @@ python train_main.py --data_root [DATA_PATH] --data_name_gt [DATA_NAME] --data_n
 ```
 The network parameters trained with full dataset can be downloaded from [here](https://drive.google.com/drive/folders/1Y6R8plKylzHNT4wkBEA4GeOreY9id1xm?usp=sharing.)
 
+Running time takes up to 4 hours on the tested environment.
 
 # Reproduce
 Here, user can reproduce the reported results from Fig 2 to Fig 5 by following instructions.  

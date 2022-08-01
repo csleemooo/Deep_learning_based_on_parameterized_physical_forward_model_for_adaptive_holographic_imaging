@@ -43,9 +43,8 @@ The data ca be downloaded from [here](https://drive.google.com/drive/u/2/folders
 The data path should be
 
 ex)
-
 [DATA_PATH]/polystyrene_bead [DATA_NAME]
-  &ndash train
+  &mdash train
     &ndash gt_amplitude
     - gt_phase
     - holography 

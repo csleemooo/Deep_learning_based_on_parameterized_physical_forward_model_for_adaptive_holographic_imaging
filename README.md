@@ -53,6 +53,7 @@ The data can be downloaded from [here](https://drive.google.com/drive/u/2/folder
 The data path should be
 
 ex)
+
 [DATA_PATH]/[DATA_NAME] 
   - train
     - gt_amplitude
@@ -73,7 +74,7 @@ python train_main.py --data_root [DATA_PATH] --data_name_gt [DATA_NAME] --data_n
 ```
 The trained network parameters are saved at [RESULT_PATH]/[EXPERIMENT_NAME]. Also, the network parameters trained with full dataset can be downloaded from [here](https://drive.google.com/drive/folders/1Y6R8plKylzHNT4wkBEA4GeOreY9id1xm?usp=sharing.)
 
-Training the model takes up to 4 hours on the tested environment. 
+Running time: up to 4 hours on the tested environment. 
 
 # Test
 We shared additional test data. Download **test_4fov.zip** from [here](https://drive.google.com/drive/u/2/folders/1kOjNYEzl8IAgIC-VBdlFQtojzrqdr2YU).
@@ -81,20 +82,20 @@ We shared additional test data. Download **test_4fov.zip** from [here](https://d
 The data path should be
 
 ex)
-[DATA_PATH_TEST]/[DATA_NAME] 
-  -fov1
-    - test
-      - gt_amplitude
-      - gt_phase
-      - holography
-  -fov2
-    - test
-      - gt_amplitude
-      - gt_phase
-      - holography
-  ...
-The trained network can be tested with following commaing.
 
+[DATA_PATH_TEST] 
+  - fov1
+    - test
+  - fov2
+    - test
+  ...
+The network can be tested with following commaing.
+
+[FOV]: fov1 or fov2 or fov3 or fov4
+```
+python test_main.py --data_root [DATA_PATH_TEST] --data_name_test [FOV] --model_root [RESULT_PATH] --experiment [EXPERIMENT_NAME] --test_diffraction_list 7,8,9,10,11,12,13,14,15,16,17
+```
+Running time: less than a minute on the tested environment. 
 
 # Reproduce
 Here, user can reproduce the reported results from Fig 2 to Fig 5 by following instructions.  

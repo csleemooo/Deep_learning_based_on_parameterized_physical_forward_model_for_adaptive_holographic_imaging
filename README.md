@@ -75,7 +75,7 @@ python train_main.py --data_root [DATA_PATH] --data_name_gt [DATA_NAME] --data_n
 ```
 The trained network parameters will be saved at [RESULT_PATH]/[EXPERIMENT_NAME]. Also, the network parameters trained with full dataset can be downloaded from [here](https://drive.google.com/drive/folders/1Y6R8plKylzHNT4wkBEA4GeOreY9id1xm?usp=sharing.).
 
-Running time: up to 4 hours on the tested environment. 
+Running time: up to 2 hours on the tested environment. 
 
 # Test
 We shared additional test data. Download **test_4fov.zip** from [here](https://drive.google.com/drive/u/2/folders/1kOjNYEzl8IAgIC-VBdlFQtojzrqdr2YU).

@@ -20,8 +20,8 @@ sys.path.append(os.path.join(os.getcwd(), '..', 'model'))
 matplotlib.use('Agg')
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-torch.manual_seed(77)
-random.seed(77)
+torch.manual_seed(777)
+random.seed(777)
 
 if __name__ == '__main__':
 

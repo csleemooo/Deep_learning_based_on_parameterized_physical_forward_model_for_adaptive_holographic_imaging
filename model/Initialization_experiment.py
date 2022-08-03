@@ -22,7 +22,7 @@ def parse_args():
     parser.add_argument("--lrelu_use", default=True, type=bool)
     parser.add_argument("--lrelu_slope", default=0.1, type=float)
     parser.add_argument("--batch_mode", default='G', type=str)
-    parser.add_argument("--zero_padding", default=False, type=bool)
+    parser.add_argument("--zero_padding", default=True, type=bool)
     parser.add_argument("--initial_channel", default=64, type=int)
 
     # hyper-parameter

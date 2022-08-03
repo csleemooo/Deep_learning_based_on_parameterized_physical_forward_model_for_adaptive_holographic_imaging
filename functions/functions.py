@@ -36,51 +36,6 @@ def make_path(path):
         os.mkdir(path)
 
 
-def save_fig(holo, fake_holo, real_amplitude, fake_amplitude, real_phase, fake_phase, real_distance, fake_distance, args, save_file):
-    import matplotlib.pyplot as plt
-    from math import pi
-    fake_distance = fake_distance*args.distance_normalize
-    fig2 = plt.figure(2, figsize=[12, 8])
-
-    plt.subplot(2, 3, 1)
-    plt.title('input holography')
-    plt.imshow(holo, cmap='gray', vmax=1, vmin=0)
-    plt.axis('off')
-    plt.subplot(2, 3, 2)
-    plt.title('ground truth' + str(real_distance) + 'mm')
-    plt.imshow(real_amplitude, cmap='gray', vmax=1, vmin=0)
-    plt.axis('off')
-    plt.colorbar()
-    plt.subplot(2, 3, 3)
-    plt.title('output ' + str(np.round(fake_distance, 2)) + 'mm')
-    plt.imshow(fake_amplitude, cmap='gray', vmax=1, vmin=0)
-    plt.axis('off')
-    plt.colorbar()
-
-    plt.subplot(2, 3, 4)
-    plt.title('generated_holography')
-    plt.imshow(fake_holo, cmap='gray', vmax=1, vmin=0)
-    plt.axis('off')
-    plt.subplot(2, 3, 5)
-    plt.title('ground truth phase')
-    plt.imshow(real_phase, cmap='jet', vmax=pi, vmin=-pi)
-    plt.axis('off')
-    plt.colorbar()
-    plt.subplot(2, 3, 6)
-    plt.title('output phase')
-    plt.imshow(fake_phase, cmap='jet', vmax=pi, vmin=-pi)
-    plt.axis('off')
-    plt.colorbar()
-
-    fig2.savefig(save_file)
-    plt.close(fig2)
-
-def standardization(x):
-    return (x-0.5)/0.5
-
-def de_standardization(x):
-    return (x+1)/2
-
 def save_fig_(save_path, result_data, args):
 
     holo, fake_holo, real_amplitude, fake_amplitude, real_phase, fake_phase, real_distance, fake_distance = result_data

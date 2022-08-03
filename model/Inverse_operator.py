@@ -4,7 +4,6 @@ from model.Initialization_model import weights_initialize_xavier_normal as weigh
 from functions.filtering import Laplace_op, Gauss_filt
 
 class Distance_Generator(nn.Module):
-
     '''
     The object-to-sensor distance generator, G_psi.
     A Single diffraction pattern intensity is used as input for the network.
@@ -53,7 +52,7 @@ class Distance_Generator(nn.Module):
         # output
         self.global_avg_pool = nn.AdaptiveAvgPool2d(1)
         self.conv_out_d = nn.Conv2d(in_channels=c3, out_channels=1, kernel_size=1)
-        
+
         self.mpool0 = nn.MaxPool2d(kernel_size=2, stride=2)
         self.relu = nn.ReLU()
         self.apply(weights_initialize)
@@ -75,8 +74,8 @@ class Distance_Generator(nn.Module):
 class Field_Generator(nn.Module):
     '''
     Complex amplitude map generator, G_phi.
-    input_channel=1 for a single diffraction pattern intensity which used as an input. 
-    To build diffraction pattern intensity generator, input_channel=2 for input complex amplitude map and output_channel=1 for output diffraction intensity. 
+    input_channel=1 for a single diffraction pattern intensity which used as an input.
+    To build diffraction pattern intensity generator, input_channel=2 for input complex amplitude map and output_channel=1 for output diffraction intensity.
     '''
 
     def __init__(self, args, input_channel=1):
@@ -205,9 +204,9 @@ class Discriminator(nn.Module):
     '''
     Complex amplitude map discriminator, D_eta.
     input_channel=3 for original image, high pass filtered image, and low pass filtered image.
-    output_channle=1 to generate whether the input image is real or fake. 
+    output_channle=1 to generate whether the input image is real or fake.
     '''
-    def __init__(self, args, input_channel=3):
+    def __init__(self, args, input_channel=1):
         super(Discriminator, self).__init__()
         self.input_channel = input_channel
         self.output_channel = 1
@@ -276,6 +275,7 @@ class CBR(nn.Module):
     lrelu_use: defalut is True. If False, ReLU is used.
     Other parameters: used for 2D-convolution layer.
     '''
+
     def __init__(self, in_channel, out_channel, padding=1, use_norm=True, kernel=3, stride=1
                  , lrelu_use=False, slope=0.1, batch_mode='G', rate=1):
         super(CBR, self).__init__()
@@ -285,7 +285,7 @@ class CBR(nn.Module):
         self.lrelu = lrelu_use
 
         self.Conv = nn.Conv2d(self.in_channel, self.out_channel, kernel_size=(kernel, kernel), stride=(stride, stride),
-                              padding=padding, dilation=(rate, rate))
+                                  padding=padding, dilation=(rate, rate))
 
         if batch_mode == 'I':
             self.Batch = nn.InstanceNorm2d(self.out_channel)

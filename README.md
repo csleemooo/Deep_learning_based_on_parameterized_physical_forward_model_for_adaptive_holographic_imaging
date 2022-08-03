@@ -45,6 +45,7 @@ The package development version is tested on windows. The developmental version 
 - Windows 10
 - CUDA 11.3
 - cuDnn 8.2
+- RTX3080 Ti
 
 # Train
 The **Adaptive holographic imaging** can be implemented through the following descriptions. We shared 300 patches of ground truth data and 100 patches of diffraction pattern intensity for distances of 7, 9, 11, 13, 15, and 17mm of polystyrene bead data. The data can be downloaded from [here](https://drive.google.com/drive/u/2/folders/1kOjNYEzl8IAgIC-VBdlFQtojzrqdr2YU). Download **train.zip and test.zip** for training. 

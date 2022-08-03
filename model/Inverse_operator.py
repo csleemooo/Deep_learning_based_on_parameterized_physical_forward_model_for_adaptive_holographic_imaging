@@ -73,7 +73,7 @@ class Distance_Generator(nn.Module):
 
 class Field_Generator(nn.Module):
     '''
-    Complex amplitude map generator, G_phi.
+    Complex amplitude map generator, G_theta.
     input_channel=1 for a single diffraction pattern intensity which used as an input.
     To build diffraction pattern intensity generator, input_channel=2 for input complex amplitude map and output_channel=1 for output diffraction intensity.
     '''
@@ -181,7 +181,7 @@ class Field_Generator(nn.Module):
 
 class SELayer(nn.Module):
     '''
-    Squeeze-and-excitation network used in G_phi and D_eta.
+    Squeeze-and-excitation network used in G_theta and D_eta.
     '''
     def __init__(self, channel, reduction=16):
         super(SELayer, self).__init__()

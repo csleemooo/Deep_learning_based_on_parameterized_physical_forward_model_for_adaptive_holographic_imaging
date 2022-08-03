@@ -13,8 +13,8 @@ def parse_args():
     parser.add_argument("--experiment", default='', type=str, help="experiment name")
     parser.add_argument("--train_gt_ratio", default=1, type=float, help="the percentage of complex amplitude used for train")
     parser.add_argument("--train_diffraction_ratio", default=1, type=float, help="the percentage of diffracted intensity used for train")
-    parser.add_argument("--train_diffraction_list", default='', type=str, help="depth of measured diffraction pattern for train")
-    parser.add_argument("--test_diffraction_list", default='', type=str, help="depth of measured diffraction pattern for test")
+    parser.add_argument("--train_diffraction_list", default='13', type=str, help="depth of measured diffraction pattern for train")
+    parser.add_argument("--test_diffraction_list", default='7,8,9,10,11,12,13,14,15,16,17', type=str, help="depth of measured diffraction pattern for test")
 
 
     # network type
@@ -32,7 +32,6 @@ def parse_args():
     parser.add_argument("--iterations", default=10000, type=int)
     parser.add_argument("--chk_iter", default=100, type=int)
     parser.add_argument("--model_chk_iter", default=2000, type=int)
-    parser.add_argument("--visualize_chk_iter", default=500, type=int)
     parser.add_argument("--lr_disc", default=1e-4, type=float)
     parser.add_argument("--lr_gen", default=1e-3, type=float)
     parser.add_argument("--lr_decay_epoch", default=5, type=int)
@@ -43,7 +42,6 @@ def parse_args():
     parser.add_argument("--gan_regularizer", default=1, type=int)
     parser.add_argument("--diffraction_regularizer", default=100, type=float)
     parser.add_argument("--field_regularizer", default=100, type=float)
-    parser.add_argument("--pixel_regularizer", default=100, type=float)
     parser.add_argument("--phase_normalize", default=2*pi, type=float)
 
     # experiment parameter

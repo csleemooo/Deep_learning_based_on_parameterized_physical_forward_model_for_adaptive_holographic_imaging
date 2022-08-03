@@ -47,8 +47,7 @@ The package development version is tested on windows. The developmental version 
 - cuDnn 8.2
 
 # Train
-We shared 300 patches of ground truth data and 100 patches of diffraction pattern intensity for each distance - 7, 9, 11, 13, 15, and 17mm of polystyrene bead data.
-The data can be downloaded from [here](https://drive.google.com/drive/u/2/folders/1kOjNYEzl8IAgIC-VBdlFQtojzrqdr2YU). Download **train.zip and test.zip** for training.
+The **Adaptive holographic imaging** can be implemented through following description. We shared 300 patches of ground truth data and 100 patches of diffraction pattern intensity for each distance - 7, 9, 11, 13, 15, and 17mm of polystyrene bead data. The data can be downloaded from [here](https://drive.google.com/drive/u/2/folders/1kOjNYEzl8IAgIC-VBdlFQtojzrqdr2YU). Download **train.zip and test.zip** for training. 
 
 The data path should be
 
@@ -69,9 +68,8 @@ ex)
 The proposed network can be trained with following command.
 
 [DATA_PATH], [DATA_NAME], [DATA_NAME_TEST], [RESULT_PATH], and [EXPERIMENT_NAME] should be filled by user.
-Also, **Adaptive holographic imaging** can be implemented by setting --train_diffraction_list 13.
 ```
-python train_main.py --data_root [DATA_PATH] --data_name_gt [DATA_NAME] --data_name_diffraction [DATA_NAME] --data_name_test [DATA_NAME_TEST] --train_diffraction_list 7,9,11,13,15,17 --test_diffraction_list 7,9,11,13,15,17 --result_root [RESULT_PATH] --experiment [EXPERIMENT_NAME] --distance_min 7 --distance_max 17 --train_gt_ratio 1 --train_diffraction_ratio 1
+python train_main.py --data_root [DATA_PATH] --data_name_gt [DATA_NAME] --data_name_diffraction [DATA_NAME] --data_name_test [DATA_NAME_TEST] --train_diffraction_list 13 --test_diffraction_list 7,9,11,13,15,17 --result_root [RESULT_PATH] --experiment [EXPERIMENT_NAME] --distance_min 7 --distance_max 17 --train_gt_ratio 1 --train_diffraction_ratio 1
 ```
 The trained network parameters will be saved at [RESULT_PATH]/[EXPERIMENT_NAME]. Also, the network parameters trained with full dataset can be downloaded from [here](https://drive.google.com/drive/folders/1Y6R8plKylzHNT4wkBEA4GeOreY9id1xm?usp=sharing.).
 

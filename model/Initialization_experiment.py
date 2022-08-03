@@ -5,12 +5,12 @@ def parse_args():
     parser = argparse.ArgumentParser()
 
     # data
-    parser.add_argument("--data_root", default='', type=str, help="Path to data folder")
+    parser.add_argument("--data_root", type=str, help="Path to data folder")
     parser.add_argument("--data_name_gt", default='polystyrene_bead', type=str, help="complex amplitude")
     parser.add_argument("--data_name_diffraction", default='polystyrene_bead', type=str, help="diffraction pattern")
     parser.add_argument("--data_name_test", default='polystyrene_bead_test', type=str)
-    parser.add_argument("--result_root", default='', type=str, help="Path to save folder")
-    parser.add_argument("--experiment", default='', type=str, help="experiment name")
+    parser.add_argument("--result_root", type=str, help="Path to save folder")
+    parser.add_argument("--experiment", type=str, help="experiment name")
     parser.add_argument("--train_gt_ratio", default=1, type=float, help="the percentage of complex amplitude used for train")
     parser.add_argument("--train_diffraction_ratio", default=1, type=float, help="the percentage of diffracted intensity used for train")
     parser.add_argument("--train_diffraction_list", default='13', type=str, help="depth of measured diffraction pattern for train")
@@ -22,7 +22,7 @@ def parse_args():
     parser.add_argument("--lrelu_use", default=True, type=bool)
     parser.add_argument("--lrelu_slope", default=0.1, type=float)
     parser.add_argument("--batch_mode", default='G', type=str)
-    parser.add_argument("--zero_padding", default=True, type=bool)
+    parser.add_argument("--zero_padding", default=False, type=bool)
     parser.add_argument("--initial_channel", default=64, type=int)
 
     # hyper-parameter

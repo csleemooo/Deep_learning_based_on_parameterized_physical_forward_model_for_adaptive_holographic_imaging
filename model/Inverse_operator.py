@@ -10,7 +10,6 @@ class Distance_Generator(nn.Module):
     A Single diffraction pattern intensity is used as input for the network.
     '''
 
-    # input to discriminator = x_Generator
     def __init__(self, args):
         super(Distance_Generator, self).__init__()
         self.input_channel = 1
@@ -23,11 +22,13 @@ class Distance_Generator(nn.Module):
         c2 = c1*2
         c3 = c2*2
 
+        # Stage 1
         self.l10 = CBR(in_channel=self.input_channel, out_channel=c1, use_norm=False, kernel=7, padding=3,
                        lrelu_use=self.lrelu_use)
         self.l11 = CBR(in_channel=c1, out_channel=c1, kernel=7, padding=3,
                        use_norm=self.use_norm, lrelu_use=self.lrelu_use, batch_mode=self.batch_mode)
 
+        # Stage 2
         self.l20 = CBR(in_channel=c1, out_channel=c2, kernel=5, padding=2,
                        use_norm=self.use_norm, lrelu_use=self.lrelu_use, batch_mode=self.batch_mode)
         self.l21 = CBR(in_channel=c2, out_channel=c2, kernel=5, padding=2,
@@ -38,6 +39,7 @@ class Distance_Generator(nn.Module):
         self.l31 = CBR(in_channel=c2, out_channel=c2, kernel=5, padding=2,
                        use_norm=self.use_norm, lrelu_use=self.lrelu_use, batch_mode=self.batch_mode)
 
+        # Stage 3
         self.l40 = CBR(in_channel=c2, out_channel=c3, kernel=3, padding=1,
                        use_norm=self.use_norm, lrelu_use=self.lrelu_use, batch_mode=self.batch_mode)
         self.l41 = CBR(in_channel=c3, out_channel=c3, kernel=3, padding=1,
@@ -48,10 +50,11 @@ class Distance_Generator(nn.Module):
         self.l51 = CBR(in_channel=c3, out_channel=c3, kernel=3, padding=1,
                        use_norm=self.use_norm, lrelu_use=self.lrelu_use, batch_mode=self.batch_mode)
 
-        self.mpool0 = nn.MaxPool2d(kernel_size=2, stride=2)
+        # output
         self.global_avg_pool = nn.AdaptiveAvgPool2d(1)
         self.conv_out_d = nn.Conv2d(in_channels=c3, out_channels=1, kernel_size=1)
-
+        
+        self.mpool0 = nn.MaxPool2d(kernel_size=2, stride=2)
         self.relu = nn.ReLU()
         self.apply(weights_initialize)
 
@@ -72,6 +75,8 @@ class Distance_Generator(nn.Module):
 class Field_Generator(nn.Module):
     '''
     Complex amplitude map generator, G_phi.
+    input_channel=1 for a single diffraction pattern intensity which used as an input. 
+    To build diffraction pattern intensity generator, input_channel=2 for input complex amplitude map and output_channel=1 for output diffraction intensity. 
     '''
 
     def __init__(self, args, input_channel=1):
@@ -153,19 +158,15 @@ class Field_Generator(nn.Module):
 
         l5 = self.conv_T5(self.l51(self.l50(l4_pool)))
 
-        # l6 = torch.cat([l5, l4], dim=1)
         l6 = torch.cat([l5, self.SE4(l4)], dim=1)
         l6 = self.conv_T6(self.l60(self.l61(l6)))
 
-        # l7 = torch.cat([l6, l3], dim=1)
         l7 = torch.cat([l6, self.SE3(l3)], dim=1)
         l7 = self.conv_T7(self.l70(self.l71(l7)))
 
-        # l8 = torch.cat([l7, l2], dim=1)
         l8 = torch.cat([l7, self.SE2(l2)], dim=1)
         l8 = self.conv_T8(self.l80(self.l81(l8)))
 
-        # l9 = torch.cat([l8, l1], dim=1)
         l9 = torch.cat([l8, self.SE1(l1)], dim=1)
         out = self.l90(self.l91(l9))
 
@@ -203,11 +204,13 @@ class SELayer(nn.Module):
 class Discriminator(nn.Module):
     '''
     Complex amplitude map discriminator, D_eta.
+    input_channel=3 for original image, high pass filtered image, and low pass filtered image.
+    output_channle=1 to generate whether the input image is real or fake. 
     '''
-    def __init__(self, args, input_channel=1):
+    def __init__(self, args, input_channel=3):
         super(Discriminator, self).__init__()
         self.input_channel = input_channel
-        self.output_channel = 1   # check ?!
+        self.output_channel = 1
         self.use_norm = args.norm_use
         self.lrelu_use = args.lrelu_use
         self.batch_mode=args.batch_mode
@@ -266,21 +269,23 @@ class Discriminator(nn.Module):
 class CBR(nn.Module):
     '''
     Convolution-norm-leaky_relu block.
-
+    batch_mode:
+    'I': Instance normalization
+    'B': Batch normalization
+    'G': Group normalization
+    lrelu_use: defalut is True. If False, ReLU is used.
+    Other parameters: used for 2D-convolution layer.
     '''
     def __init__(self, in_channel, out_channel, padding=1, use_norm=True, kernel=3, stride=1
-                 , lrelu_use=False, slope=0.1, batch_mode='I', sampling='down', rate=1):
+                 , lrelu_use=False, slope=0.1, batch_mode='G', rate=1):
         super(CBR, self).__init__()
         self.in_channel = in_channel
         self.out_channel = out_channel
         self.use_norm = use_norm
         self.lrelu = lrelu_use
 
-        if sampling == 'down':
-            self.Conv = nn.Conv2d(self.in_channel, self.out_channel, kernel_size=(kernel, kernel), stride=(stride, stride),
-                                  padding=padding, dilation=(rate, rate))
-        else:
-            self.Conv = nn.ConvTranspose2d(self.in_channel, self.out_channel, kernel_size=(2,2), stride=(2,2), padding=(0,0))
+        self.Conv = nn.Conv2d(self.in_channel, self.out_channel, kernel_size=(kernel, kernel), stride=(stride, stride),
+                              padding=padding, dilation=(rate, rate))
 
         if batch_mode == 'I':
             self.Batch = nn.InstanceNorm2d(self.out_channel)

@@ -45,6 +45,7 @@ if __name__ == '__main__':
     ##############################################################
 
     # define model
+    model_args.output_channel=2
     diffraction_G = Holo_Generator(model_args).to(device=device)
     distance_G = Distance_Generator(model_args).to(device=device)
     Field_G = Field_Generator(model_args).to(device=device)

@@ -38,7 +38,7 @@ def parse_args():
     parser.add_argument("--lr_decay_rate", default=0.95, type=float)
     parser.add_argument("--distance_regularizer", default=100, type=float)
     parser.add_argument("--penalty_regularizer", default=20, type=int)
-    parser.add_argument("--ssim_regularizer", default=0, type=int)
+    parser.add_argument("--ssim_regularizer", default=10, type=int)
     parser.add_argument("--gan_regularizer", default=1, type=int)
     parser.add_argument("--diffraction_regularizer", default=100, type=float)
     parser.add_argument("--field_regularizer", default=100, type=float)

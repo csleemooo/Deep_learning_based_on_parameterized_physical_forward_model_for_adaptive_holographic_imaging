@@ -69,11 +69,11 @@ The proposed network can be trained with the following command.
 
 [DATA_PATH], [DATA_NAME], [DATA_NAME_TEST], [RESULT_PATH], and [EXPERIMENT_NAME] should be filled by user.
 ```
-python train_main.py --data_root [DATA_PATH] --data_name_gt [DATA_NAME] --data_name_diffraction [DATA_NAME] --data_name_test [DATA_NAME_TEST] --train_diffraction_list 13 --test_diffraction_list 7,9,11,13,15,17 --result_root [RESULT_PATH] --experiment [EXPERIMENT_NAME] --distance_min 7 --distance_max 17 --train_gt_ratio 1 --train_diffraction_ratio 1 --iterations 12000
+python train_main.py --data_root [DATA_PATH] --data_name_gt [DATA_NAME] --data_name_diffraction [DATA_NAME] --data_name_test [DATA_NAME_TEST] --train_diffraction_list 13 --test_diffraction_list 7,9,11,13,15,17 --result_root [RESULT_PATH] --experiment [EXPERIMENT_NAME] --distance_min 7 --distance_max 17 --train_gt_ratio 1 --train_diffraction_ratio 1 --iterations 20000
 ```
 The trained network parameters will be saved at [RESULT_PATH]/[EXPERIMENT_NAME]. Also, the network parameters trained with full dataset can be downloaded from [here](https://drive.google.com/drive/folders/1Y6R8plKylzHNT4wkBEA4GeOreY9id1xm?usp=sharing.).
 
-Running time: up to 2 hours on the tested environment. 
+Running time: up to 4 hours on the tested environment. 
 
 # Test
 We shared additional test data. Download **test_4fov.zip** from [here](https://drive.google.com/drive/u/2/folders/1kOjNYEzl8IAgIC-VBdlFQtojzrqdr2YU).
@@ -90,7 +90,7 @@ ex)
   ...
 
 The network can be tested with the following command.
-[FOV]: fov1 or fov2 or fov3 or fov4
+[FOV]: fov1, fov2, fov3, fov4
 ```
 python test_main.py --data_root [DATA_PATH_TEST] --data_name_test [FOV] --model_root [RESULT_PATH] --experiment [EXPERIMENT_NAME] --test_diffraction_list 7,8,9,10,11,12,13,14,15,16,17
 ```

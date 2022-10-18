@@ -52,10 +52,12 @@ The package development version is tested on windows. The developmental version 
 The **Adaptive holographic imaging** and **Holographic imaging of RBCs in a dynamic environment** can be implemented through the following descriptions.
 
 **Adaptive holographic imaging**
+
 We shared 300 patches of complex amplitude and 100 patches of diffraction pattern intensity measured at distances of 7-17mm with 2mm spacing.The polystyrene bead data can be downloaded from [here](https://figshare.com/articles/dataset/3um_polystyrene_bead_dataset/21353937)
 
 
 **Holographic imaging of RBCs in a dynamic environment**
+
 we shared 600 patches of complex amplitude and 600 patches of diffraction pattern intensity measured at 24mm. The red blood cell data can be downloaded from [here](https://figshare.com/articles/dataset/Red_blood_cell_dataset/21354000).
 
 

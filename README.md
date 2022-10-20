@@ -53,12 +53,12 @@ The **Adaptive holographic imaging** and **Holographic imaging of RBCs in a dyna
 
 **Adaptive holographic imaging**
 
-We shared 300 patches of complex amplitude and 100 patches of diffraction pattern intensity measured at distances of 7-17mm with 2mm spacing.The polystyrene bead data can be downloaded from [here](https://figshare.com/articles/dataset/3um_polystyrene_bead_dataset/21353937)
+We shared 300 patches of complex amplitude and 100 patches of diffraction pattern intensity measured at distances of 7-17mm with 2mm spacing.The whole polystyrene bead data can be downloaded from [here](https://figshare.com/articles/dataset/3um_polystyrene_bead_dataset/21353937). Also, parts of shared data are located in ./dataset/polystyrene_bead folder. User can run demo using this data. 
 
 
 **Holographic imaging of RBCs in a dynamic environment**
 
-we shared 600 patches of complex amplitude and 600 patches of diffraction pattern intensity measured at 24mm. The red blood cell data can be downloaded from [here](https://figshare.com/articles/dataset/Red_blood_cell_dataset/21354000).
+we shared 600 patches of complex amplitude and 600 patches of diffraction pattern intensity measured at 24mm. The whole red blood cell data can be downloaded from [here](https://figshare.com/articles/dataset/Red_blood_cell_dataset/21354000). Also, parts of shared data are located in ./dataset/red_blood_cell folder. User can run demo using this data. Note that there are no paired data between complex amplitude and diffraction intensity of red blood cell as we acquired the data in a dynamic environment.
 
 
 Download **train.zip and test.zip** for training. 
@@ -82,16 +82,20 @@ ex)
 
 The proposed network can be trained with the following command.
 
-[DATA_PATH], [DATA_NAME], [DATA_NAME_TEST], [RESULT_PATH], and [EXPERIMENT_NAME] should be filled by user.
+To run demo
+```
+python train_main.py --data_root ./dataset --data_name_gt polstyrene_bead --data_name_diffraction polstyrene_bead --data_name_test polstyrene_bead --train_diffraction_list 13 --test_diffraction_list 7,9,11,13,15,17 --result_root ./ --experiment DEMO --distance_min 7 --distance_max 17 --train_gt_ratio 1 --train_diffraction_ratio 1 --iterations 10 --chk_iter 1
+```
+To train the model with full dataset, [DATA_PATH], [DATA_NAME], [DATA_NAME_TEST], [RESULT_PATH], and [EXPERIMENT_NAME] should be filled by user.
 ```
 python train_main.py --data_root [DATA_PATH] --data_name_gt [DATA_NAME] --data_name_diffraction [DATA_NAME] --data_name_test [DATA_NAME_TEST] --train_diffraction_list 13 --test_diffraction_list 7,9,11,13,15,17 --result_root [RESULT_PATH] --experiment [EXPERIMENT_NAME] --distance_min 7 --distance_max 17 --train_gt_ratio 1 --train_diffraction_ratio 1 --iterations 20000
 ```
-The trained network parameters will be saved at [RESULT_PATH]/[EXPERIMENT_NAME]. Also, the network parameters trained with full dataset can be downloaded from [here](https://drive.google.com/drive/folders/1Y6R8plKylzHNT4wkBEA4GeOreY9id1xm?usp=sharing.).
+The trained network parameters will be saved at [RESULT_PATH]/[EXPERIMENT_NAME]. Also, the network parameters trained with full dataset that used in this study can be downloaded from [here](https://drive.google.com/drive/folders/1Y6R8plKylzHNT4wkBEA4GeOreY9id1xm?usp=sharing.).
 
 Running time: up to 4 hours on the tested environment. 
 
 # Test
-We shared additional test data. Download **test_4fov.zip** from [here](https://drive.google.com/drive/u/2/folders/1kOjNYEzl8IAgIC-VBdlFQtojzrqdr2YU).
+We shared additional test data. Download **test_4fov.zip** from [here](https://drive.google.com/drive/u/2/folders/1kOjNYEzl8IAgIC-VBdlFQtojzrqdr2YU). Make sure that the network parameters are saved somewhere before run the test code.
 
 The data path should be
 
@@ -105,6 +109,11 @@ ex)
   ...
 
 The network can be tested with the following command.
+
+To run demo
+```
+python test_main.py --data_root [DATA_PATH_TEST] --data_name_test [FOV] --model_root [RESULT_PATH] --experiment [EXPERIMENT_NAME] --test_diffraction_list 7,8,9,10,11,12,13,14,15,16,17
+```
 [FOV]: fov1, fov2, fov3, fov4
 ```
 python test_main.py --data_root [DATA_PATH_TEST] --data_name_test [FOV] --model_root [RESULT_PATH] --experiment [EXPERIMENT_NAME] --test_diffraction_list 7,8,9,10,11,12,13,14,15,16,17

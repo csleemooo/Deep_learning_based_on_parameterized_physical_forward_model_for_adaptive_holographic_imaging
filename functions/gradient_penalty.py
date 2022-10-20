@@ -24,7 +24,7 @@ def calc_gradient_penalty(netD, real_data, fake_data, BATCH_SIZE):
     gradients = torch.zeros((BATCH_SIZE, N21*N22, nc*N11*N12), requires_grad=True).to(device=device)
     for xx in range(N21):
         for yy in range(N22):
-            gradients[:, xx*N22 + yy] = autograd.grad(outputs=disc_interpolates[:, 0, xx, yy].reshape(BATCH_SIZE, 1, 1, 1), inputs=interpolates,
+            gradients[:, xx*N22 + yy] = gradients[:, xx*N22 + yy] + autograd.grad(outputs=disc_interpolates[:, 0, xx, yy].reshape(BATCH_SIZE, 1, 1, 1), inputs=interpolates,
                                   grad_outputs=torch.ones((BATCH_SIZE, 1, 1, 1)).to(device=device),
                                   create_graph=True, retain_graph=True, only_inputs=True)[0].reshape(BATCH_SIZE, -1)
 

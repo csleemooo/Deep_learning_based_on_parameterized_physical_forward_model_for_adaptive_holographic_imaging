@@ -84,7 +84,7 @@ The proposed network can be trained with the following command.
 
 To run demo
 ```
-python train_main.py --data_root ./dataset --data_name_gt polstyrene_bead --data_name_diffraction polstyrene_bead --data_name_test polstyrene_bead --train_diffraction_list 13 --test_diffraction_list 7,9,11,13,15,17 --result_root ./ --experiment DEMO --distance_min 7 --distance_max 17 --train_gt_ratio 1 --train_diffraction_ratio 1 --iterations 10 --chk_iter 1
+python train_main.py --data_root ./dataset --data_name_gt polystyrene_bead --data_name_diffraction polystyrene_bead --data_name_test polystyrene_bead --train_diffraction_list 13 --test_diffraction_list 7,9,11,13,15,17 --result_root ./ --experiment DEMO --distance_min 7 --distance_max 17 --train_gt_ratio 1 --train_diffraction_ratio 1 --iterations 10 --chk_iter 1
 ```
 To train the model with full dataset, [DATA_PATH], [DATA_NAME], [DATA_NAME_TEST], [RESULT_PATH], and [EXPERIMENT_NAME] should be filled by user.
 ```
@@ -95,7 +95,7 @@ The trained network parameters will be saved at [RESULT_PATH]/[EXPERIMENT_NAME].
 Running time: up to 4 hours on the tested environment. 
 
 # Test
-We shared additional test data. Download **test_4fov.zip** from [here](https://drive.google.com/drive/u/2/folders/1kOjNYEzl8IAgIC-VBdlFQtojzrqdr2YU). Make sure that the network parameters are saved somewhere before run the test code.
+We shared additional test data. Download **test_4fov.zip** from [here](https://figshare.com/articles/dataset/3um_polystyrene_bead_dataset/21353937). Make sure that the network parameters are saved somewhere before run the test code.
 
 The data path should be
 
@@ -110,9 +110,9 @@ ex)
 
 The network can be tested with the following command.
 
-To run demo
+To run demo, user should run the train demo code first. If not, the network parameters should be downloaded from [here] and saved in ./DEMO folder.
 ```
-python test_main.py --data_root [DATA_PATH_TEST] --data_name_test [FOV] --model_root [RESULT_PATH] --experiment [EXPERIMENT_NAME] --test_diffraction_list 7,8,9,10,11,12,13,14,15,16,17
+python test_main.py --data_root ./dataset --data_name_test polystyrene_bead --model_root ./ --experiment DEMO --test_diffraction_list 7,8,9,10,11,12,13,14,15,16,17
 ```
 [FOV]: fov1, fov2, fov3, fov4
 ```

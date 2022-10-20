@@ -58,7 +58,7 @@ We shared 300 patches of complex amplitude and 100 patches of diffraction patter
 
 **Holographic imaging of RBCs in a dynamic environment**
 
-we shared 600 patches of complex amplitude and 600 patches of diffraction pattern intensity measured at 24mm. The whole red blood cell data can be downloaded from [here](https://figshare.com/articles/dataset/Red_blood_cell_dataset/21354000). Also, parts of shared data are located in ./dataset/red_blood_cell folder. User can run demo using this data. Note that there are no paired data between complex amplitude and diffraction intensity of red blood cell as we acquired the data in a dynamic environment.
+we shared 600 patches of complex amplitude and 600 patches of diffraction pattern intensity measured at 24mm. The whole red blood cell data can be downloaded from [here](https://figshare.com/articles/dataset/Red_blood_cell_dataset/21354000). Also, parts of shared data are located in ./dataset/red_blood_cell folder. User can run demo using this data. Note that there are no paired data between complex amplitude and diffraction intensity of red blood cell as we acquired the data in a dynamic environment. Also, as we did not measure the distance of diffraction intensity of red blood cell (setting distance range [18, 30] is enough).
 
 
 Download **train.zip and test.zip** for training. 
@@ -85,7 +85,7 @@ The proposed network can be trained with the following command.
 To run demo
 ```
 python train_main.py --data_root ./dataset --data_name_gt polystyrene_bead --data_name_diffraction polystyrene_bead --data_name_test polystyrene_bead --train_diffraction_list 13 --test_diffraction_list 7,9,11,13,15,17 --result_root ./ --experiment DEMO --distance_min 7 --distance_max 17 --train_gt_ratio 1 --train_diffraction_ratio 1 --iterations 10 --chk_iter 1
-python train_main.py --data_root ./dataset --data_name_gt red_blood_cell --data_name_diffraction red_blood_cell --data_name_test red_blood_cell --train_diffraction_list 1 --test_diffraction_list 1,2,3,4,5,6,7,8,9,10 --result_root ./ --experiment DEMO --distance_min 7 --distance_max 17 --train_gt_ratio 1 --train_diffraction_ratio 1 --iterations 10 --chk_iter 1
+python train_main.py --data_root ./dataset --data_name_gt red_blood_cell --data_name_diffraction red_blood_cell --data_name_test red_blood_cell --train_diffraction_list 1 --test_diffraction_list 1,2,3,4,5,6,7,8,9,10 --result_root ./ --experiment DEMO --distance_min 18 --distance_max 30 --train_gt_ratio 1 --train_diffraction_ratio 1 --iterations 10 --chk_iter 1
 ```
 To train the model with full dataset, [DATA_PATH], [DATA_NAME], [DATA_NAME_TEST], [RESULT_PATH], and [EXPERIMENT_NAME] should be filled by user.
 ```

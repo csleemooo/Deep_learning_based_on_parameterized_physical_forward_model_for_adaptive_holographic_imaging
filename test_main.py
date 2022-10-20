@@ -86,7 +86,7 @@ if __name__ == '__main__':
         fake_distance = (fake_distance.item() + model_args.distance_normalize_constant) * model_args.distance_normalize
 
         fake_amplitude = fake_amplitude.cpu().detach().numpy()[0][0]
-        fake_phase = fake_phase.cpu().detach().numpy()[0][0] * args.phase_normalize
+        fake_phase = fake_phase.cpu().detach().numpy()[0][0] * model_args.phase_normalize
 
         if test_gt_loader:
             real_amplitude = real_amplitude.cpu().detach().numpy()[0][0]

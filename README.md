@@ -110,7 +110,7 @@ ex)
 
 The network can be tested with the following command.
 
-To run demo, user should run the train demo code first. If not, the network parameters should be downloaded from [here] and saved in ./DEMO folder.
+To run demo, user should run the train demo code first. If not, the network parameters should be downloaded from [here](https://drive.google.com/file/d/1Ov276n377Siad4NbgLAwZqtvt4soi-4U/view?usp=sharing) and saved in ./DEMO folder.
 ```
 python test_main.py --data_root ./dataset --data_name_test polystyrene_bead --model_root ./ --experiment DEMO --test_diffraction_list 7,8,9,10,11,12,13,14,15,16,17
 ```

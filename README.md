@@ -43,7 +43,7 @@ which should install in about few minutes.
 
 ## Environements
 The package development version is tested on windows. The developmental version of the package has been tested on the following systems and drivers.
-- Windows 10
+- Windows 10/Linux/Mac
 - CUDA 11.3
 - cuDnn 8.2
 - RTX3080 Ti

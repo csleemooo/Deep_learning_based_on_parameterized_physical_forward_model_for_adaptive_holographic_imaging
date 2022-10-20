@@ -4,9 +4,10 @@ from typing import Any, Callable, List, Optional, Tuple
 import os
 import numpy as np
 from PIL import Image
+import platform
 
 np.random.seed(777)
-
+os_name = platform.system().lower()
 class Holo_Recon_Dataloader(Dataset):
 
     def __init__(self,
@@ -64,7 +65,12 @@ class Holo_Recon_Dataloader(Dataset):
 
         if 'holography' in self.data_type:
             pth = os.path.join(self.root_list[0], self.data_list[0][index])
-            distance =self.data_list[0][index].split("\\")[0]
+            
+            if os_name == 'windows':
+                distance =self.data_list[0][index].split("\\")[0]
+            else:
+                distance =self.data_list[0][index].split("/")[0]
+                
             distance = float(distance) if '.' in distance else int(distance)
             holo = self.load_matfile(pth)['holography']
 

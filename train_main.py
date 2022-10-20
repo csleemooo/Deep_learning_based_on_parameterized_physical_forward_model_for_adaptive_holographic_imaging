@@ -55,8 +55,11 @@ if __name__ == '__main__':
     ## load test data
     test_diffraction_list = [int(i) for i in args.test_diffraction_list.split(',')]
 
-    test_gt_loader = Holo_Recon_Dataloader(root=data_path_test, data_type=['gt_amplitude', 'gt_phase'],
+    try:
+        test_gt_loader = Holo_Recon_Dataloader(root=data_path_test, data_type=['gt_amplitude', 'gt_phase'],
                                            image_set='test', transform=transform_img)
+    except:
+        test_gt_loader = None
     test_diffraction_loader = Holo_Recon_Dataloader(root=data_path_test, data_type=['holography'], image_set='test',
                                              transform=transform_img, holo_list=test_diffraction_list)
     N_test = test_diffraction_loader.__len__()
@@ -216,11 +219,12 @@ if __name__ == '__main__':
             test_diffraction = iter(DataLoader(test_diffraction_loader, batch_size=1, shuffle=False))
 
             for b in range(N_test):
-                real_amplitude, real_phase = next(test_gt)
-                diffraction = next(test_diffraction).to(device).float()
+                if test_gt_loader:
+                    real_amplitude, real_phase = next(test_gt)
+                    real_amplitude = real_amplitude.to(device=device).float()
+                    real_phase = real_phase.to(device=device).float()
 
-                real_amplitude = real_amplitude.to(device=device).float()
-                real_phase = real_phase.to(device=device).float()
+                diffraction = next(test_diffraction).to(device).float()
                 real_distance = test_diffraction_list[b]
 
                 ## generate test amplitude and distance
@@ -233,10 +237,15 @@ if __name__ == '__main__':
                 diffraction = diffraction.cpu().detach().numpy()[0][0]
                 fake_distance = (fake_distance.item() + args.distance_normalize_constant) * args.distance_normalize
 
-                real_amplitude = real_amplitude.cpu().detach().numpy()[0][0]
-                real_phase = real_phase.cpu().detach().numpy()[0][0]
                 fake_amplitude = fake_amplitude.cpu().detach().numpy()[0][0]
-                fake_phase = fake_phase.cpu().detach().numpy()[0][0]* args.phase_normalize
+                fake_phase = fake_phase.cpu().detach().numpy()[0][0] * args.phase_normalize
+
+                if test_gt_loader:
+                    real_amplitude = real_amplitude.cpu().detach().numpy()[0][0]
+                    real_phase = real_phase.cpu().detach().numpy()[0][0]
+                else:
+                    real_amplitude = np.zeros_like(fake_amplitude)
+                    real_phase = np.zeros_like(fake_phase)
 
                 save_fig_(save_path=os.path.join(p, f'test{b+1}.png'), result_data=
                          [diffraction, fake_diffraction, real_amplitude, fake_amplitude, real_phase, fake_phase, real_distance, fake_distance], args=args)

@@ -85,6 +85,7 @@ The proposed network can be trained with the following command.
 To run demo
 ```
 python train_main.py --data_root ./dataset --data_name_gt polystyrene_bead --data_name_diffraction polystyrene_bead --data_name_test polystyrene_bead --train_diffraction_list 13 --test_diffraction_list 7,9,11,13,15,17 --result_root ./ --experiment DEMO --distance_min 7 --distance_max 17 --train_gt_ratio 1 --train_diffraction_ratio 1 --iterations 10 --chk_iter 1
+python train_main.py --data_root ./dataset --data_name_gt red_blood_cell --data_name_diffraction red_blood_cell --data_name_test red_blood_cell --train_diffraction_list 13 --test_diffraction_list 7,9,11,13,15,17 --result_root ./ --experiment DEMO --distance_min 7 --distance_max 17 --train_gt_ratio 1 --train_diffraction_ratio 1 --iterations 10 --chk_iter 1
 ```
 To train the model with full dataset, [DATA_PATH], [DATA_NAME], [DATA_NAME_TEST], [RESULT_PATH], and [EXPERIMENT_NAME] should be filled by user.
 ```
@@ -113,6 +114,7 @@ The network can be tested with the following command.
 To run demo, user should run the train demo code first. If not, the network parameters should be downloaded from [here](https://drive.google.com/file/d/1Ov276n377Siad4NbgLAwZqtvt4soi-4U/view?usp=sharing) and saved in ./DEMO folder.
 ```
 python test_main.py --data_root ./dataset --data_name_test polystyrene_bead --model_root ./ --experiment DEMO --test_diffraction_list 7,8,9,10,11,12,13,14,15,16,17
+python test_main.py --data_root ./dataset --data_name_test red_blood_cell --model_root ./ --experiment DEMO --test_diffraction_list 1,2,3,4,5,6,7,8,9,10
 ```
 [FOV]: fov1, fov2, fov3, fov4
 ```

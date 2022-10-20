@@ -71,9 +71,12 @@ if __name__ == '__main__':
             real_amplitude, real_phase = next(test_gt)
             real_amplitude = real_amplitude.to(device=device).float()
             real_phase = real_phase.to(device=device).float()
+            real_distance = test_diffraction_list[b]
+        else:
+            real_distance = 0
 
         diffraction = next(test_diffraction).to(device).float()
-        real_distance = test_diffraction_list[b]
+        
 
         ## generate test amplitude and distance
         fake_amplitude, fake_phase = Field_G(diffraction)

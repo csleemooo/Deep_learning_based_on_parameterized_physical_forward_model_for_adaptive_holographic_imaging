@@ -53,12 +53,12 @@ The **Adaptive holographic imaging** and **Holographic imaging of RBCs in a dyna
 
 **Adaptive holographic imaging**
 
-We shared 300 patches of complex amplitude and 100 patches of diffraction pattern intensity measured at distances of 7-17mm with 2mm spacing.The whole polystyrene bead data can be downloaded from [here](https://figshare.com/articles/dataset/3um_polystyrene_bead_dataset/21353937). Also, parts of shared data are located in ./dataset/polystyrene_bead folder. User can run demo using this data. 
+We shared 300 patches of complex amplitude and 100 patches of diffraction pattern intensity measured at distances of 7-17mm with 2mm spacing.The whole polystyrene bead data can be downloaded from [here](https://doi.org/10.6084/m9.figshare.21378744). Also, parts of shared data are located in ./dataset/polystyrene_bead folder. User can run demo using this data. 
 
 
 **Holographic imaging of RBCs in a dynamic environment**
 
-we shared 600 patches of complex amplitude and 600 patches of diffraction pattern intensity measured at 24mm. The whole red blood cell data can be downloaded from [here](https://figshare.com/articles/dataset/Red_blood_cell_dataset/21354000). Also, parts of shared data are located in ./dataset/red_blood_cell folder. User can run demo using this data. Note that there are no paired data between complex amplitude and diffraction intensity of red blood cell as we acquired the data in a dynamic environment. Also, as we did not measure the distance of diffraction intensity of red blood cell (setting distance range [18, 30] is enough).
+we shared 600 patches of complex amplitude and 600 patches of diffraction pattern intensity measured at 24mm. The whole red blood cell data can be downloaded from [here](https://doi.org/10.6084/m9.figshare.21378744). Also, parts of shared data are located in ./dataset/red_blood_cell folder. User can run demo using this data. Note that there are no paired data between complex amplitude and diffraction intensity of red blood cell as we acquired the data in a dynamic environment. Also, as we did not measure the distance of diffraction intensity of red blood cell (setting distance range [18, 30] is enough).
 
 
 Download **train.zip and test.zip** for training. 
@@ -96,7 +96,7 @@ The trained network parameters will be saved at [RESULT_PATH]/[EXPERIMENT_NAME].
 Running time: up to 4 hours on the tested environment. 
 
 # Test
-We shared additional test data. Download **test_4fov.zip** from [here](https://figshare.com/articles/dataset/3um_polystyrene_bead_dataset/21353937). Make sure that the network parameters are saved somewhere before run the test code.
+We shared additional test data. Download **test_4fov.zip** from [here](https://doi.org/10.6084/m9.figshare.21378744). Make sure that the network parameters are saved somewhere before run the test code.
 
 The data path should be
 

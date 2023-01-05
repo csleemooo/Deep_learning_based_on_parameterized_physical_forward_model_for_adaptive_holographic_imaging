@@ -6,6 +6,7 @@ from torch.utils.data import DataLoader
 from torchvision import transforms
 import torch
 from torch import nn
+from tqdm import tqdm
 
 from model.Forward_operator import Holo_Generator
 from model.Inverse_operator import Distance_Generator, Field_Generator, Discriminator
@@ -92,7 +93,7 @@ if __name__ == '__main__':
     loss_field_D_list, loss_field_D_penalty_list = [], []
 
 
-    for it in range(args.iterations):
+    for it in tqdm(range(args.iterations)):
 
         Field_G.train()
         Field_D.train()

@@ -287,12 +287,13 @@ class CBR(nn.Module):
         self.Conv = nn.Conv2d(self.in_channel, self.out_channel, kernel_size=(kernel, kernel), stride=(stride, stride),
                                   padding=padding, dilation=(rate, rate))
 
-        if batch_mode == 'I':
-            self.Batch = nn.InstanceNorm2d(self.out_channel)
-        elif batch_mode == 'G':
-            self.Batch = nn.GroupNorm(self.out_channel//16, self.out_channel)
-        else:
-            self.Batch = nn.BatchNorm2d(self.out_channel)
+        if self.use_norm:
+            if batch_mode == 'I':
+                self.Batch = nn.InstanceNorm2d(self.out_channel)
+            elif batch_mode == 'G':
+                self.Batch = nn.GroupNorm(self.out_channel//16, self.out_channel)
+            else:
+                self.Batch = nn.BatchNorm2d(self.out_channel)
 
         self.lrelu = nn.LeakyReLU(negative_slope=slope)
         self.relu = nn.ReLU()

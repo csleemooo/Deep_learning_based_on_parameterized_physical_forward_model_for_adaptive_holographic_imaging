@@ -24,7 +24,8 @@ if __name__ == '__main__':
     args = parse_args()
     params = torch.load(os.path.join(args.model_root, args.experiment, 'model.pth'))
     model_args = params['args']
-
+    model_args.output_channel=2
+    
     model_args.distance_normalize=model_args.distance_max - model_args.distance_min
     model_args.distance_normalize_constant=model_args.distance_min/model_args.distance_normalize
 

@@ -90,7 +90,7 @@ class Holo_Recon_Dataloader(Dataset):
             pth = os.path.join(self.root_list[0], self.data_list[0][index])
             gt_amplitude = self.load_matfile(pth)['gt_amplitude']
 
-            pth = os.path.join(self.root_list[1], self.data_list[1][index])
+            pth = os.path.join(self.root_list[1], self.data_list[0][index].replace('amplitude','phase'))
             gt_phase = self.load_matfile(pth)['gt_phase']
 
             if self.transform is not None:
